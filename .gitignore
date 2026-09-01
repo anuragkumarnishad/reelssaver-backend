@@ -1,0 +1,5 @@
+.env
+node_modules/
+story-session.json
+__pycache__/
+*.pyc

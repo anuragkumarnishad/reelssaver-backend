@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: reelssaver-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: MEDIA_WORKER_URL
+        sync: false
+      - key: DOWNLOAD_SIGNING_SECRET
+        sync: false
+      - key: IG_COOKIE
+        sync: false
+      - key: IG_CSRF_TOKEN
+        sync: false
+      - key: IG_FEED_SESSIONID
+        sync: false
+      - key: IG_FEED_USERNAMES
+        value: cristiano,nasa,bbcnews
+      - key: IG_STORY_SESSIONID
+        sync: false
+      - key: IG_STORY_SESSION_FILE
+        value: /tmp/story-session.json
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "60000"
+      - key: RATE_LIMIT_MAX
+        value: "60"
+      - key: RESOLVE_CACHE_MS
+        value: "300000"
